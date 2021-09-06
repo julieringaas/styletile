@@ -1,8 +1,8 @@
 /* change these */
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,800italic,400,800");
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap'); */
-@import url("https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap");
 
 * {
   box-sizing: border-box;
@@ -14,38 +14,93 @@ use the fonts in other ways in the font hierarchy etc. */
 
 /* change these */
 :root {
-  --bg-color: red;
-  --link-color: green;
-  --link-hover-color: blue;
-  --color-4: hotpink;
-  --color-5: rebeccapurple;
+  --bg-color: #f2f2f2;
+  --link-color: #01401c;
+  --link-hover-color: #038c4c;
+  --color-4: #02733e;
+  --color-5: #0d0d0d;
 
-  --primary-font: "Open Sans", sans-serif;
-  --secondary-font: "Droid Serif", serif;
+  --primary-font: "Urbanist", sans-serif;
+  --secondary-font: "Urbanist", sans-serif;
   --main-text-color: #000;
 
   --white-space: 1rem;
 }
 
+/*button*/
+
 button {
-  transition: all 3s;
+  transition: all 1s;
+  background-color: white;
+  border-color: #01401c;
+  border-radius: 6px;
+  width: 10rem;
+  height: 2rem;
+  border: 1px solid #02733e;
 }
 a {
-  transition: all 3s;
+  transition: all 1s;
 }
 button:hover {
-  background-color: var(--link-hover-color);
-  transform: scale(3) rotate(40deg);
+  color: #038c4c;
 }
 
 button:active {
   background-color: var(--bg-color);
 }
 
-a:hover {
-  color: var(--link-hover-color);
-  font-size: 4rem;
+/*link*/
+
+li {
+  list-style: none;
 }
+
+a:hover {
+  color: #038c4c;
+  animation: animate 5s linear infinite;
+}
+
+.content__item::before {
+  color: var(--color-number);
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: counters(itemcounter, ".", decimal-leading-zero);
+}
+
+.link::before,
+.link::after {
+  position: absolute;
+  width: 10%;
+  height: 1px;
+  background: currentColor;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.link::before {
+  content: "";
+  /* show by default */
+}
+
+.link--metis {
+  font-family: "urbanist", sans-serif;
+}
+
+.link--metis::before {
+  transform-origin: 100% 50%;
+  transform: scale3d(0, 1, 2);
+  transition: transform 0.3s;
+}
+
+.link--metis:hover::before {
+  transform-origin: 0% 30%;
+  transform: scale3d(1, 1, 1);
+}
+
+/*link*/
+
 html {
   font-size: 100%;
   font-family: var(--primary-font);
@@ -68,31 +123,33 @@ footer {
   background: var(--bg-color);
   color: white;
   width: 100%;
+  background-color: #f2f2f2;
 }
 
 .header-wrapper h1 {
   font-size: 3rem;
-  text-transform: uppercase;
   letter-spacing: -2px;
   padding-right: 0.75em;
-  font-weight: bold;
-  color: white;
+  font-weight: 500;
+  color: black;
 }
 
 .header-wrapper h2 {
   font-size: 1.6em;
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: bold;
+  color: black;
+  font-weight: 400;
   margin: var(--white-space) 0;
 }
 
 .header-wrapper h3 {
   font-size: 1.2rem;
-  font-style: italic;
+  color: black;
+  font-weight: 300;
 }
 
 .header-wrapper h4 {
   font-size: 0.8rem;
+  color: black;
 }
 
 main {
@@ -104,7 +161,6 @@ section {
 }
 
 .section-heading {
-  font-style: italic;
   font-size: 1.3rem;
   color: #777;
   margin: 0.5rem 0;
@@ -152,19 +208,26 @@ ul li:last-child {
 }
 
 .texture-swatch-1 {
-  background: url(../img/pw_maze_white.png) top left repeat;
+  background: url(/img/thomas-heintz-0tgMnMIYQ9Y-unsplash.jpg) top left repeat;
+  background-size: 40%;
+  opacity: 70%;
 }
 
 .texture-swatch-2 {
-  background: url(../img/subtle_grunge.png) top left repeat;
+  background: url(/img/wesley-tingey-_0sEjWfAK3Q-unsplash.jpg) no-repeat;
+  background-size: 100%;
 }
 
 .texture-swatch-1 {
-  background: url(../img/pw_maze_white.png) top left repeat;
+  background: url(../img/annie-spratt-g5DkG2ZF7ZY-unsplash.jpg) no-repeat;
+  background-size: 100%;
+  opacity: 70%;
 }
 
 .texture-swatch-3 {
-  background: url(../img/white_paperboard.png) top left repeat;
+  background: url(../img/thomas-heintz-0tgMnMIYQ9Y-unsplash.jpg) no-repeat;
+  background-size: 200%;
+  opacity: 50%;
 }
 
 .images ul {
@@ -178,30 +241,14 @@ ul li:last-child {
   margin-bottom: 1rem;
 }
 
-button {
-  padding: 1rem;
-  border-radius: 4px;
-  background: var(--link-color);
-  text-align: center;
-  text-decoration: none;
-  font: bold 1.25em/1 var(--primary-font);
-  letter-spacing: 1px;
-  color: white;
-  text-transform: uppercase;
-  text-shadow: 0px -1px 0px #0374a0;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  margin: 0 1rem 1rem 0;
-}
-
 .secondary-button {
-  background: var(--color-5);
+  background: white;
 }
 
 button:focus,
 button:active,
 button:focus-within {
-  outline: 0;
+  outline: 5px;
   border-radius: 4px;
 }
 
@@ -212,18 +259,19 @@ button:focus-within {
 .h1-sample {
   font-size: 2.4rem;
   font-weight: bold;
+  color: #01401c;
 }
 
 .h2-sample {
   font-family: var(--secondary-font);
-  font-style: italic;
-  font-size: 1.25rem;
+  font-size: 1, 1 rem;
 }
 
 p.typography-sample {
   font-family: var(--secondary-font);
   line-height: 1.5;
   max-width: 960px;
+  font-weight: 300;
 }
 
 strong {
@@ -272,8 +320,9 @@ footer {
 
   .swatches li {
     margin-right: 3%;
-    height: 10vw;
-    width: 20%;
+    height: 100px;
+    width: 100px;
+    margin-top: 7%;
   }
 
   .textures li {
